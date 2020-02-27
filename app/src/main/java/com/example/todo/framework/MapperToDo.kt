@@ -11,16 +11,20 @@ class MapperToDo {
         return modelMapper.map(entityTask, Task::class.java)
     }
 
+    fun fromDomaintoEntity (task: Task): TaskEntity{
+        val modelMapper = ModelMapper()
+        return modelMapper.map(task, TaskEntity::class.java)
+    }
+
     fun fromListDBtoListDomain (entityTaskList: List<TaskEntity>): List<Task>{
         val modelMapper = ModelMapper()
         val listTaskModel = ArrayList<Task>()
         return modelMapper.map(entityTaskList, listTaskModel.javaClass)
     }
 
-    fun fromDomaintoEntity (task: Task): TaskEntity{
+    fun fromListDomaintoListDB (taskList: List<Task>): List<TaskEntity>{
         val modelMapper = ModelMapper()
-        return modelMapper.map(task, TaskEntity::class.java)
+        val listTaskEntity = ArrayList<TaskEntity>()
+        return modelMapper.map(taskList, listTaskEntity.javaClass)
     }
-
-
 }

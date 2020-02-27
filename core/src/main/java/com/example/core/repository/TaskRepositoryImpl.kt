@@ -25,8 +25,8 @@ class TaskRepositoryImpl (
         return taskList
     }
 
-    override suspend fun getTask(): Task {
-        return Task("", "")
+    override suspend fun getTask( idTask: Int): Task {
+        return localDataSource.getTask(idTask)
     }
 
 

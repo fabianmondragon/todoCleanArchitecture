@@ -19,4 +19,8 @@ abstract class TaskDao {
     @Query("DELETE FROM task WHERE task.id = :id")
     abstract fun delete(id: Int)
 
+    @Insert
+    abstract fun insertTaskList(listEntity: List<TaskEntity>)
+
+
 }

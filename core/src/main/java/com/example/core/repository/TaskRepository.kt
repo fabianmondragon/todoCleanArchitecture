@@ -6,7 +6,7 @@ interface TaskRepository {
 
     suspend fun getAllTask (): List<Task>
 
-    suspend fun getTask(): Task
+    suspend fun getTask( idTask: Int): Task
 
     suspend fun saveTask (task: Task)
 

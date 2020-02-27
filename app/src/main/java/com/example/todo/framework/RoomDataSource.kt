@@ -15,15 +15,16 @@ class RoomDataSource (context: Context) : LocalDataSource {
     }
 
     override suspend fun saveTaskList(taskList: List<Task>) {
-
+        taskDao.insertTaskList(mapperToDo.fromListDomaintoListDB(taskList))
     }
 
     override suspend fun getAllTask(): List<Task> {
         mapperToDo = MapperToDo()
         return mapperToDo.fromListDBtoListDomain(taskDao.getAll())
     }
-    override suspend fun getTask(): Task {
+
+    override suspend fun getTask(idTask: Int): Task {
         mapperToDo = MapperToDo()
-        return mapperToDo.fromDBtoDomain(taskDao.getTask(1))
+        return mapperToDo.fromDBtoDomain(taskDao.getTask(idTask))
     }
 }
