@@ -1,92 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.MainActivity"
-    android:layout_margin="10dp">
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="todoViewModel"
+            type="com.example.todo.framework.TodoViewModel" />
+    </data>
 
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.MainActivity"
+        android:layout_margin="10dp">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:text="Enter task" />
+
+                    <EditText
+                        android:id="@+id/editTextTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:text="@={todoViewModel.editTextTitle}"
+                        android:hint="Enter the title"
+                        android:inputType="textPersonName" />
+
+                    <EditText
+                        android:id="@+id/editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:text="@={todoViewModel.editTextDescription}"
+                        android:hint="Enter the description"
+                        android:inputType="textPersonName" />
+
+                    <Button
+                        android:id="@+id/bntAddTask"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> todoViewModel.registerTask()}"
+                        android:text="Add" />
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:text="Lista de Actividades">
+
+            </TextView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="20dp"
-                    android:text="Enter task" />
+                >
 
-                <EditText
-                    android:id="@+id/editTextTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Enter the title"
-                    android:inputType="textPersonName" />
+            </androidx.recyclerview.widget.RecyclerView>
 
-                <EditText
-                    android:id="@+id/editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Enter the description"
-                    android:inputType="textPersonName" />
-
-                <Button
-                    android:id="@+id/bntAddTask"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onClick"
-                    android:text="Add" />
-
-            </LinearLayout>
-
-
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:layout_height="wrap_content"
-            android:text="Lista de Actividades">
-
-        </TextView>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            >
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-    </LinearLayout>
+        </LinearLayout>
 
 
 
@@ -95,4 +105,5 @@
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

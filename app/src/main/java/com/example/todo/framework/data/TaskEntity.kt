@@ -17,8 +17,4 @@ data class TaskEntity (
 
     @ColumnInfo(name="name")
     val name: String
-){
-    constructor() : this(-1, "","")
-
-}
-
+)
