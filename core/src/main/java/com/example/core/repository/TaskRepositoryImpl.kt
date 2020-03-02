@@ -14,8 +14,6 @@ class TaskRepositoryImpl (
         localDataSource.saveTask(task)
     }
 
-
-
     override suspend fun getAllTask(): List<Task> {
         taskList = localDataSource.getAllTask()
         if (taskList.isEmpty()){
