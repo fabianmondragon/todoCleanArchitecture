@@ -6,10 +6,14 @@ import com.example.core.repository.RemoteDataSource
 
 class RetrofitDataSource (context: Context): RemoteDataSource {
     override suspend fun getAllTask(): List<Task> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //To change body of created functions use File | Settings | File Templates.
+        var list = ArrayList<Task>()
+        return list
     }
 
     override suspend fun getTask(): Task {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+         //To change body of created functions use File | Settings | File Templates.
+        val task = Task("","")
+        return task
     }
 }
