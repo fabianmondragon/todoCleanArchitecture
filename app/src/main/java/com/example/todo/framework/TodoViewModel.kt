@@ -43,4 +43,12 @@ class TodoViewModel ( application: Application) : AndroidViewModel (application)
             }
         }
     }
+    fun getAllTask (){
+        coroutineScope.launch {
+            val listOfTask = useCases.getAllTask.invoke()
+            taskList.postValue(listOfTask)
+
+        }
+
+    }
 }

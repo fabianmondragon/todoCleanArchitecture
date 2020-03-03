@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = taskAdapter
         binding.setLifecycleOwner(this)
         setObservers()
+        viewModel.getAllTask()
+
     }
 
     private fun setObservers (){
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity() {
                 taskAdapter.updateInformation(taskList)
             }
         })
+
     }
 
 }
