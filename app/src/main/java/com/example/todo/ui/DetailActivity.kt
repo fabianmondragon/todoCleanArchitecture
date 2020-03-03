@@ -1,11 +1,9 @@
 package com.example.todo.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.todo.R
-import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : AppCompatActivity() {
 

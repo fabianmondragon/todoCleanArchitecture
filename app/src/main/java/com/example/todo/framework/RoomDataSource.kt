@@ -5,7 +5,7 @@ import com.example.core.entity.Task
 import com.example.core.repository.LocalDataSource
 import com.example.todo.framework.data.DatabaseService
 
-class RoomDataSource (context: Context) : LocalDataSource {
+class RoomDataSource(context: Context) : LocalDataSource {
     val taskDao = DatabaseService.getInstance(context).taskDao()
     lateinit var mapperToDo: MapperToDo
 

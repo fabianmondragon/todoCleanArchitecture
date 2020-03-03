@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import org.jetbrains.annotations.NotNull
 
 @Entity(tableName = "task")
-data class TaskEntity (
+data class TaskEntity(
 
     @PrimaryKey(autoGenerate = true)
     @NotNull
@@ -15,6 +15,6 @@ data class TaskEntity (
     @ColumnInfo(name = "description")
     val description: String,
 
-    @ColumnInfo(name="name")
+    @ColumnInfo(name = "name")
     val name: String
 )
