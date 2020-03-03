@@ -4,30 +4,33 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.core.entity.Task
-import com.example.core.repository.TaskRepositoryImpl
-import com.example.core.usecase.AddTask
-import com.example.core.usecase.GetAllTask
+import com.example.todo.framework.di.ApplicationModule
+import com.example.todo.framework.di.DaggerToDoComponent
 import com.example.todo.model.Validation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class TodoViewModel(application: Application) : AndroidViewModel(application) {
+
+    @Inject
+    lateinit var useCases: UseCases
+
+    @Inject
+    lateinit var validation: Validation
 
     val editTextTitle = MutableLiveData<String>()
     val editTextDescription = MutableLiveData<String>()
     val taskList = MutableLiveData<List<Task>>()
-    private val validation = Validation()
-
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
 
-    val taskRepositoryImpl =
-        TaskRepositoryImpl(RoomDataSource(application), RetrofitDataSource(application))
-
-    val useCases: UseCases = UseCases(
-        AddTask(taskRepositoryImpl),
-        GetAllTask(taskRepositoryImpl)
-    )
+    init {
+        DaggerToDoComponent.builder()
+            .applicationModule(ApplicationModule(getApplication()))
+            .build()
+            .inject(this)
+    }
 
     fun registerTask() {
         coroutineScope.launch {

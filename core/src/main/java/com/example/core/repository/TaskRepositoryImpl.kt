@@ -1,14 +1,13 @@
 package com.example.core.repository
 
 import com.example.core.entity.Task
-import com.sun.xml.internal.bind.v2.TODO
 
-class TaskRepositoryImpl (
+class TaskRepositoryImpl(
     private val localDataSource: LocalDataSource,
     private val remoteDataSource: RemoteDataSource
 
 ) : TaskRepository {
-    lateinit var taskList:List<Task>
+    lateinit var taskList: List<Task>
 
     override suspend fun saveTask(task: Task) {
         localDataSource.saveTask(task)
@@ -16,18 +15,16 @@ class TaskRepositoryImpl (
 
     override suspend fun getAllTask(): List<Task> {
         taskList = localDataSource.getAllTask()
-        if (taskList.isEmpty()){
+        if (taskList.isEmpty()) {
             taskList = remoteDataSource.getAllTask()
             localDataSource.saveTaskList(taskList)
         }
         return taskList
     }
 
-    override suspend fun getTask( idTask: Int): Task {
+    override suspend fun getTask(idTask: Int): Task {
         return localDataSource.getTask(idTask)
     }
-
-
 
 
 }

@@ -12,7 +12,6 @@ abstract class DatabaseService : RoomDatabase() {
 
     companion object {
         private const val DATABASE_NAME = "note.db"
-
         private var instance: DatabaseService? = null
 
         private fun create(context: Context): DatabaseService =
@@ -20,9 +19,9 @@ abstract class DatabaseService : RoomDatabase() {
                 .fallbackToDestructiveMigration()
                 .build()
 
-
         fun getInstance(context: Context): DatabaseService =
             (instance ?: create(context)).also { instance = it }
+
     }
 
 

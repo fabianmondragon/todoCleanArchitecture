@@ -15,7 +15,6 @@ class TaskAdapter(
     val itemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<ViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_task, parent, false))
     }
@@ -25,8 +24,6 @@ class TaskAdapter(
         holder?.textViewItemDescription?.text = items[position].description
         holder?.textViewItemtTitle?.text = items[position].name
         holder.bind(task, itemClickListener)
-
-
     }
 
     override fun getItemCount(): Int = items.size
@@ -36,24 +33,16 @@ class TaskAdapter(
         notifyDataSetChanged()
     }
 
-    fun getItemSelected(position: Int): Task {
-        return items.get(position)
-    }
-
-
 }
 
 class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val textViewItemtTitle = itemView.textViewItemTitle
     val textViewItemDescription = itemView.textViewItemDescription
-
     fun bind(task: Task, clickListener: OnItemClickListener) {
-
         itemView.setOnClickListener {
             clickListener.onItemClicked(task)
         }
     }
-
 }
 
 interface OnItemClickListener {
